@@ -3,8 +3,8 @@ package pl.sebastian.driver.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tranings")
-public class Training {
+@Table(name = "tags")
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
