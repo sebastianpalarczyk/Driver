@@ -3,8 +3,8 @@ package pl.sebastian.driver.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "answers")
-public class Answer {
+@Table(name = "advices")
+public class Advice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,11 @@ public class Answer {
     private File file;
 
 
-    public Answer() {
+
+    public Advice() {
     }
 
-    public Answer(Long id, String content, File file) {
+    public Advice(Long id, String content, File file) {
         this.id = id;
         this.content = content;
         this.file = file;
