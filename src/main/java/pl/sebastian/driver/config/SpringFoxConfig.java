@@ -1,4 +1,4 @@
-package pl.sebastian.driver.Config;
+package pl.sebastian.driver.config;
 
 
 import org.springframework.context.annotation.Bean;
