@@ -4,12 +4,20 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
 import pl.sebastian.driver.DTO.QuestionDto;
+import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.domain.Question;
+import pl.sebastian.driver.service.QuestionService;
 
 @Component
 public class QuestionDtoAssembler {
 
     private ModelMapper modelMapper;
+
+    private final QuestionService questionService;
+
+    public QuestionDtoAssembler(QuestionService questionService) {
+        this.questionService = questionService;
+    }
 
     public QuestionDto toDto(Question question){
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
@@ -18,9 +26,12 @@ public class QuestionDtoAssembler {
     }
 
     public Question fromDto(QuestionDto questionDto){
-        Question question = new Question();
-        question.setId(questionDto.getId());
-        question.setContent(questionDto.getContent());
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+        Question question = modelMapper.map(questionDto,Question.class);
+        if(questionDto.getId() != 0){
+            Question oldQuestion = questionService.getQuestionById(questionDto.getId());
+            question.setId(oldQuestion.getId());
+        }
         return question;
     }
 }
