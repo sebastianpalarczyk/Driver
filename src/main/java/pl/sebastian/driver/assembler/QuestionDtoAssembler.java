@@ -4,18 +4,18 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
 import pl.sebastian.driver.DTO.QuestionDto;
-import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.domain.Question;
 import pl.sebastian.driver.service.QuestionService;
 
 @Component
 public class QuestionDtoAssembler {
 
-    private ModelMapper modelMapper;
+    private final  ModelMapper modelMapper;
 
     private final QuestionService questionService;
 
-    public QuestionDtoAssembler(QuestionService questionService) {
+    public QuestionDtoAssembler(ModelMapper modelMapper, QuestionService questionService) {
+        this.modelMapper = modelMapper;
         this.questionService = questionService;
     }
 

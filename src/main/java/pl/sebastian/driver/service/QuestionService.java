@@ -1,7 +1,6 @@
 package pl.sebastian.driver.service;
 
 import org.springframework.stereotype.Service;
-import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.domain.Question;
 import pl.sebastian.driver.repository.QuestionRepository;
 
@@ -22,10 +21,6 @@ public class QuestionService {
 
     public Question findById(Long id){
         return questionRepository.findById(id).get();
-    }
-
-    public Question question(Question question){
-        return questionRepository.save(question);
     }
 
     public Question create(){

@@ -10,19 +10,22 @@ public class Advice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    @OneToOne
-    @JoinColumn(name = "file_id", unique = true)
-    private File file;
+//    @OneToOne
+//    @JoinColumn(name = "file_id", unique = true)
+//    private File file;
+    @Column(name = "file_id", insertable = false, updatable = false)
+    private long fileId;
 
 
 
     public Advice() {
     }
 
-    public Advice(Long id, String content, File file) {
+    public Advice(Long id, String content, File file, long fileId) {
         this.id = id;
         this.content = content;
-        this.file = file;
+//        this.file = file;
+        this.fileId = fileId;
     }
 
     public Long getId() {
@@ -41,11 +44,19 @@ public class Advice {
         this.content = content;
     }
 
-    public File getFile() {
-        return file;
+//    public File getFile() {
+//        return file;
+//    }
+//
+//    public void setFile(File file) {
+//        this.file = file;
+//    }
+
+    public long getFileId() {
+        return fileId;
     }
 
-    public void setFile(File file) {
-        this.file = file;
+    public void setFileId(long fileId) {
+        this.fileId = fileId;
     }
 }

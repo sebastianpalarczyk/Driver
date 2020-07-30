@@ -17,4 +17,18 @@ public class TrainingService {
     public Training getTrainingById(Long id) {
         return trainingRepository.getOne(id);
     }
+
+    public Training findById(Long id){
+        return trainingRepository.findById(id).get();
+    }
+
+    public Training save(Training training){
+        return trainingRepository.save(training);
+    }
+
+    public Training create(){
+        Training training = new Training();
+        training.setContent("Dobry trening");
+        return trainingRepository.save(training);
+    }
 }

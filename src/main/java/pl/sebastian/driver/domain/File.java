@@ -20,7 +20,7 @@ public class File {
     public File() {
     }
 
-    public File(String id, String fileName, String fileType, byte[] data, Advice advice) {
+    public File(String id, String fileName, String fileType, byte[] data) {
         this.id = id;
         this.fileName = fileName;
         this.fileType = fileType;

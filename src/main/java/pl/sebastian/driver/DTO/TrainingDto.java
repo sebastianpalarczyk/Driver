@@ -8,6 +8,7 @@ import java.util.List;
 public class TrainingDto {
 
     private Long id;
+    private String content;
     private List<QuestionDto> questions = new ArrayList<>();
 
     public Long getId() {
@@ -16,6 +17,14 @@ public class TrainingDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public List<QuestionDto> getQuestions() {

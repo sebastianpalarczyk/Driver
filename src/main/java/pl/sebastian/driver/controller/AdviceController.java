@@ -1,14 +1,10 @@
 package pl.sebastian.driver.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.service.AdviceService;
 
-@Controller
+@RestController
 public class AdviceController {
 
     private final AdviceService adviceService;
