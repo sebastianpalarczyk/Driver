@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.sebastian.driver.DTO.FileDto;
+import pl.sebastian.driver.assembler.FileDtoAssembler;
 import pl.sebastian.driver.domain.File;
 import pl.sebastian.driver.service.FileService;
 
@@ -14,14 +16,16 @@ import pl.sebastian.driver.service.FileService;
 public class FileController {
 
     private final FileService fileService;
+    private final FileDtoAssembler fileDtoAssembler;
 
-    public FileController(FileService fileService) {
+    public FileController(FileService fileService, FileDtoAssembler fileDtoAssembler) {
         this.fileService = fileService;
+        this.fileDtoAssembler = fileDtoAssembler;
     }
 
     @PostMapping(value = "/file")
-    public File create(@RequestParam("file") MultipartFile multipartFile) {
-        return fileService.storeFile(multipartFile);
+    public FileDto create(@RequestParam("file") MultipartFile multipartFile) {
+        return fileDtoAssembler.toDto(fileService.storeFile(multipartFile));
     }
 
     @GetMapping(value = "/file/{id}")

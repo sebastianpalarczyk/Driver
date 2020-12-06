@@ -18,22 +18,20 @@ public class QuestionController {
     }
 
     @PostMapping(value = "/question")
-    public QuestionDto create(@RequestBody QuestionDto questionDto){
+    public QuestionDto create(@RequestBody QuestionDto questionDto) {
         Question question = questionDtoAssembler.fromDto(questionDto);
-
         return questionDtoAssembler.toDto(questionService.save(question));
     }
 
     @GetMapping(value = "/question/{id}")
-    public Question one(@PathVariable Long id){
+    public Question one(@PathVariable Long id) {
         return questionService.findById(id);
     }
 
     @PutMapping(value = "/question/{id}")
-    public QuestionDto update(@PathVariable Long id, @RequestBody QuestionDto questionDto){
+    public QuestionDto update(@PathVariable Long id, @RequestBody QuestionDto questionDto) {
         Question byId = questionService.findById(id);
         byId.setContent(questionDto.getContent());
-
         return questionDtoAssembler.toDto(questionService.save(byId));
     }
 }

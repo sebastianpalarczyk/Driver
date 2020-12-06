@@ -1,11 +1,14 @@
 package pl.sebastian.driver.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "trainings")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Training {
 
     @Id

@@ -8,6 +8,7 @@ public class FileDto {
     private String fileName;
     private String fileType;
     private byte[] data;
+    private String fileUri = "http://localhost:8090/file/"+id;
 
     public Long getId() {
         return id;

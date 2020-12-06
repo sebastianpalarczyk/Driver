@@ -26,9 +26,4 @@ public class TrainingService {
         return trainingRepository.save(training);
     }
 
-    public Training create(){
-        Training training = new Training();
-        training.setContent("Dobry trening");
-        return trainingRepository.save(training);
-    }
 }

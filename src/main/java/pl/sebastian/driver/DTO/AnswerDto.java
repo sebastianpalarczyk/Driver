@@ -1,10 +1,11 @@
 package pl.sebastian.driver.DTO;
 
+
 public class AnswerDto {
 
     private Long id;
     private String content;
-    private String file = "http://localhost:8080/file/{id}";
+    private String fileId;// = "http://localhost:8080/file/{id}";
 
     public Long getId() {
         return id;
@@ -22,7 +23,11 @@ public class AnswerDto {
         this.content = content;
     }
 
-    public String getFile() {
-        return file;
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 }
