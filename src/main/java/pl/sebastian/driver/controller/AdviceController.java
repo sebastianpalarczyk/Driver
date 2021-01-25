@@ -6,6 +6,9 @@ import pl.sebastian.driver.assembler.AdviceDtoAssembler;
 import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.service.AdviceService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 public class AdviceController {
 
@@ -17,11 +20,14 @@ public class AdviceController {
         this.adviceDtoAssembler = adviceDtoAssembler;
     }
 
-//    @PostMapping(value = "/advice")
-//    public AdviceDto create(@RequestBody AdviceDto adviceDto){
-//       Advice advice = adviceDtoAssembler.fromDto(adviceDto);
-//       return adviceDtoAssembler.toDto(adviceService.save(advice));
-//    }
+    @PostMapping(value = "/advice")
+    public AdviceDto create(@RequestBody AdviceDto adviceDto){
+       Advice advice = new Advice();
+       advice.setId(adviceDto.getId());
+       advice.setContent(adviceDto.getContent());
+       advice.setFileId(Long.parseLong(adviceDto.getFileID()));
+       return adviceDtoAssembler.toDto(adviceService.save(advice));
+    }
 
     @GetMapping(value = "/advice/{id}")
     public AdviceDto one(@PathVariable Long id){
@@ -29,20 +35,26 @@ public class AdviceController {
         return adviceDtoAssembler.toDto(advice);
     }
 
+    @GetMapping(value = "/advice")
+    public List<AdviceDto> all(){
+        return adviceService.all().stream()
+                .map( advice -> adviceDtoAssembler.toDto(advice))
+                .collect(Collectors.toList());
+    }
+
     @PutMapping(value = "/advice/{id}")
     public AdviceDto update(@PathVariable Long id, @RequestBody AdviceDto adviceDto){
         Advice advice = adviceService.getAdviceById(id);
         advice.setContent(adviceDto.getContent());
-        advice.setFileId(Long.parseLong(adviceDto.getFile()));
+        advice.setFileId(Long.valueOf(adviceDto.getFileID()));
         return adviceDtoAssembler.toDto(adviceService.save(advice));
     }
 
-    @PostMapping(value = "/advice")
-    public AdviceDto create(){
-       Advice advice = new Advice();
-       advice.setContent("content");
-       advice.setFileId(12);
-       return adviceDtoAssembler.toDto(advice);
+    @DeleteMapping(value = "/advice/{id}")
+    public AdviceDto delete(@PathVariable Long id){
+        Advice advice = adviceService.findById(id);
+        adviceService.delete(advice);
+        return adviceDtoAssembler.toDto(advice);
     }
 
 }

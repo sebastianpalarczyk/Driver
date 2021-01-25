@@ -10,7 +10,7 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    @Column(name = "file_id",insertable = false, updatable = false)
+    @Column(name = "file_id")
     private Long fileId;
 
 
@@ -31,14 +31,6 @@ public class Answer {
     public void setContent(String content) {
         this.content = content;
     }
-
-//    public File getFile() {
-//        return file;
-//    }
-//
-//    public void setFile(File file) {
-//        this.file = file;
-//    }
 
     public Long getFileId() {
         return fileId;

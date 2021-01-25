@@ -13,15 +13,15 @@ public class Advice {
 //    @OneToOne
 //    @JoinColumn(name = "file_id", unique = true)
 //    private File file;
-    @Column(name = "file_id", insertable = false, updatable = false)
-    private long fileId;
+    @Column(name = "file_id")
+    private Long fileId;
 
 
 
     public Advice() {
     }
 
-    public Advice(Long id, String content, File file, long fileId) {
+    public Advice(Long id, String content, File file, Long fileId) {
         this.id = id;
         this.content = content;
 //        this.file = file;
@@ -52,11 +52,11 @@ public class Advice {
 //        this.file = file;
 //    }
 
-    public long getFileId() {
+    public Long getFileId() {
         return fileId;
     }
 
-    public void setFileId(long fileId) {
+    public void setFileId(Long fileId) {
         this.fileId = fileId;
     }
 }

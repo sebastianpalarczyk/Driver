@@ -4,7 +4,7 @@ public class AdviceDto {
 
     private Long id;
     private String content;
-    private String file = "http://localhost:8080/file/{id}";
+    private String fileID;
 
     public Long getId() {
         return id;
@@ -22,7 +22,11 @@ public class AdviceDto {
         this.content = content;
     }
 
-    public String getFile() {
-        return file;
+    public String getFileID() {
+        return fileID;
+    }
+
+    public void setFileID(String fileID) {
+        this.fileID = fileID;
     }
 }

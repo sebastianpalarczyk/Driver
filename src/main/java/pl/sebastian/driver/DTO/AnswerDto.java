@@ -5,7 +5,7 @@ public class AnswerDto {
 
     private Long id;
     private String content;
-    private String fileId;// = "http://localhost:8080/file/{id}";
+    private String fileId;
 
     public Long getId() {
         return id;

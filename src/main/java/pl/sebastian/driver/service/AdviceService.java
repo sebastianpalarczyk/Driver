@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.repository.AdviceRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,19 +26,15 @@ public class AdviceService {
         return findAdvice.get();
     }
 
+    public List<Advice> all(){
+        return adviceRepository.findAll();
+    }
+
+    public void delete(Advice advice){
+        adviceRepository.delete(advice);
+    }
+
     public Advice save(Advice advice){
         return adviceRepository.save(advice);
-    }
-
-    public Advice create(){
-        Advice advice = new Advice();
-        advice.setId(1L);
-        advice.setContent("Najlepsza porada");
-        return advice;
-    }
-
-    public Advice replace(Advice advice){
-        advice.setContent("Good advice");
-        return advice;
     }
 }

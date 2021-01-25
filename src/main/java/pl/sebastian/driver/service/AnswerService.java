@@ -5,6 +5,7 @@ import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.domain.Answer;
 import pl.sebastian.driver.repository.AnswerRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,10 +30,12 @@ public class AnswerService {
         return findAdvice.get();
     }
 
-    public Answer create(){
-        Answer answer = new Answer();
-        answer.setId(1L);
-        answer.setContent("Dobra odpowiedz");
-        return answer;
+    public List<Answer> all(){
+        return answerRepository.findAll();
     }
+
+    public void delete(Answer answer){
+        answerRepository.delete(answer);
+    }
+
 }

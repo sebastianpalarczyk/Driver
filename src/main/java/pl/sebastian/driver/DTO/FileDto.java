@@ -1,14 +1,12 @@
 package pl.sebastian.driver.DTO;
 
-
-
 public class FileDto {
 
     private Long id;
     private String fileName;
     private String fileType;
     private byte[] data;
-    private String fileUri = "http://localhost:8090/file/"+id;
+    private String fileUri;
 
     public Long getId() {
         return id;
@@ -34,6 +32,14 @@ public class FileDto {
         this.fileType = fileType;
     }
 
+    public String getFileUri() {
+        return fileUri;
+    }
+
+    public void setFileUri(String fileUri) {
+        this.fileUri = fileUri;
+    }
+
     public byte[] getData() {
         return data;
     }
@@ -41,5 +47,4 @@ public class FileDto {
     public void setData(byte[] data) {
         this.data = data;
     }
-
 }

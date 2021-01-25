@@ -12,11 +12,9 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-//    @OneToOne
-//    @JoinColumn(name = "file_id", unique = true)
-//    private File file;
-    @Column(name = "file_id", insertable = false, updatable = false)
-    private long fileId;
+    @Column(name = "file_id")
+    private Long fileId;
+    @Column(name = "traning_id")
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "question_answers",
                joinColumns = @JoinColumn(name = "question_id"),
@@ -26,10 +24,9 @@ public class Question {
     public Question() {
     }
 
-    public Question(Long id, String content, File file, long fileId, List<Answer> answers) {
+    public Question(Long id, String content, Long fileId, List<Answer> answers) {
         this.id = id;
         this.content = content;
-        //this.file = file;
         this.fileId = fileId;
         this.answers = answers;
     }
@@ -50,13 +47,13 @@ public class Question {
         this.content = content;
     }
 
-//    public File getFile() {
-//        return file;
-//    }
-//
-//    public void setFile(File file) {
-//        this.file = file;
-//    }
+    public Long getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
+    }
 
     public List<Answer> getAnswers() {
         return answers;
@@ -64,13 +61,5 @@ public class Question {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
-    }
-
-    public long getFileId() {
-        return fileId;
-    }
-
-    public void setFileId(long fileId) {
-        this.fileId = fileId;
     }
 }

@@ -6,6 +6,9 @@ import pl.sebastian.driver.assembler.AnswerDtoAssembler;
 import pl.sebastian.driver.domain.Answer;
 import pl.sebastian.driver.service.AnswerService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 public class AnswerController {
 
@@ -29,10 +32,24 @@ public class AnswerController {
         return answerDtoAssembler.toDto(answer);
     }
 
+    @GetMapping(value = "/answer")
+    public List<AnswerDto> all(){
+        return answerService.all().stream()
+                .map(answer -> answerDtoAssembler.toDto(answer))
+                .collect(Collectors.toList());
+    }
+
     @PutMapping(value = "/answer/{id}")
     public AnswerDto update(@PathVariable Long id, @RequestBody AnswerDto answerDto){
         Answer answer = answerService.getAnswerById(id);
         answer.setContent(answerDto.getContent());
+        answer.setFileId(Long.valueOf(answerDto.getFileId()));
         return answerDtoAssembler.toDto(answerService.save(answer));
+    }
+
+    @DeleteMapping(value = "/answer/{id}")
+    public AnswerDto delete(Answer answer){
+        answerService.delete(answer);
+        return answerDtoAssembler.toDto(answer);
     }
 }

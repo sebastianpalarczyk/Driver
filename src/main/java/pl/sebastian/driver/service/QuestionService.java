@@ -15,18 +15,8 @@ public class QuestionService {
         this.questionRepository = questionRepository;
     }
 
-    public Question getQuestionById(Long id) {
-        return questionRepository.getOne(id);
-    }
-
     public Question findById(Long id){
         return questionRepository.findById(id).get();
-    }
-
-    public Question create(){
-        Question question = new Question();
-        question.setContent("Najlepsze pytanie");
-        return question;
     }
 
     public Question save(Question question){

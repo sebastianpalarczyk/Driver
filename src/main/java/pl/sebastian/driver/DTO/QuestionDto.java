@@ -6,9 +6,8 @@ public class QuestionDto {
 
     private Long id;
     private String content;
-    private String file = "http://localhost:8080/file/{id}";
+    private String fileId;
     private List<AnswerDto> answers;
-
 
     public Long getId() {
         return id;
@@ -26,8 +25,12 @@ public class QuestionDto {
         this.content = content;
     }
 
-    public String getFile() {
-        return file;
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 
     public List<AnswerDto> getAnswers() {

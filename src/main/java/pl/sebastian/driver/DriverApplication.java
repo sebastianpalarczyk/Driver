@@ -23,10 +23,6 @@ public class DriverApplication {
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
-//                .setSkipNullEnabled(true)
-//                .setPropertyCondition(Objects::isNull)
-//                .setSourceNamingConvention(NamingConventions.NONE)
-//                .setDestinationNamingConvention(NamingConventions.NONE)
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
         return modelMapper;
     }
