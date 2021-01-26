@@ -1,7 +1,6 @@
 package pl.sebastian.driver.service;
 
 import org.springframework.stereotype.Service;
-import pl.sebastian.driver.domain.Advice;
 import pl.sebastian.driver.domain.Answer;
 import pl.sebastian.driver.repository.AnswerRepository;
 

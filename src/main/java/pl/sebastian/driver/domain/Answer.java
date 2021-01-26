@@ -13,8 +13,14 @@ public class Answer {
     @Column(name = "file_id")
     private Long fileId;
 
+    public Answer() {
+    }
 
-
+    public Answer(Long id, String content, Long fileId) {
+        this.id = id;
+        this.content = content;
+        this.fileId = fileId;
+    }
 
     public Long getId() {
         return id;

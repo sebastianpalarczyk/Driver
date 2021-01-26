@@ -3,8 +3,6 @@ package pl.sebastian.driver.domain;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "trainings")
@@ -15,17 +13,13 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "training_id")
-    private List<Question> questions = new ArrayList<>();
 
     public Training() {
     }
 
-    public Training(Long id, String content, List<Question> questions) {
+    public Training(Long id, String content) {
         this.id = id;
         this.content = content;
-        this.questions = questions;
     }
 
     public Long getId() {
@@ -44,11 +38,4 @@ public class Training {
         this.content = content;
     }
 
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
 }

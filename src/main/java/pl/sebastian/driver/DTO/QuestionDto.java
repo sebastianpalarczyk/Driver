@@ -8,6 +8,7 @@ public class QuestionDto {
     private String content;
     private String fileId;
     private List<AnswerDto> answers;
+    private String trainingId;
 
     public Long getId() {
         return id;
@@ -39,5 +40,13 @@ public class QuestionDto {
 
     public void setAnswers(List<AnswerDto> answers) {
         this.answers = answers;
+    }
+
+    public String getTrainingId() {
+        return trainingId;
+    }
+
+    public void setTrainingId(String trainingId) {
+        this.trainingId = trainingId;
     }
 }

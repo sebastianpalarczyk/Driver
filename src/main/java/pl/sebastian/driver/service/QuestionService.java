@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.sebastian.driver.domain.Question;
 import pl.sebastian.driver.repository.QuestionRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class QuestionService {
@@ -21,5 +21,13 @@ public class QuestionService {
 
     public Question save(Question question){
         return questionRepository.save(question);
+    }
+
+    public List<Question> all(){
+        return questionRepository.findAll();
+    }
+
+    public void delete(Question question){
+        questionRepository.delete(question);
     }
 }

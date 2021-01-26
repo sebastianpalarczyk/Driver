@@ -14,20 +14,23 @@ public class Question {
     private String content;
     @Column(name = "file_id")
     private Long fileId;
-    @Column(name = "traning_id")
+    @Column(name = "training_id")
+    private Long trainingId;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "question_answers",
                joinColumns = @JoinColumn(name = "question_id"),
                inverseJoinColumns = @JoinColumn(name = "answer_id"))
     private List <Answer> answers = new ArrayList<>();
 
+
     public Question() {
     }
 
-    public Question(Long id, String content, Long fileId, List<Answer> answers) {
+    public Question(Long id, String content, Long fileId, Long trainingId, List<Answer> answers) {
         this.id = id;
         this.content = content;
         this.fileId = fileId;
+        this.trainingId = trainingId;
         this.answers = answers;
     }
 
@@ -61,5 +64,13 @@ public class Question {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Long getTrainingId() {
+        return trainingId;
+    }
+
+    public void setTrainingId(Long trainingId) {
+        this.trainingId = trainingId;
     }
 }

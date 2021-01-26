@@ -16,7 +16,7 @@ public class FileController {
     private final FileService fileService;
     private final FileDtoAssembler fileDtoAssembler;
 
-    public FileController(FileService fileService, FileDtoAssembler fileDtoAssembler, FileRepository fileRepository) {
+    public FileController(FileService fileService, FileDtoAssembler fileDtoAssembler) {
         this.fileService = fileService;
         this.fileDtoAssembler = fileDtoAssembler;
     }

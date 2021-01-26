@@ -48,7 +48,8 @@ public class AnswerController {
     }
 
     @DeleteMapping(value = "/answer/{id}")
-    public AnswerDto delete(Answer answer){
+    public AnswerDto delete(@PathVariable Long id){
+        Answer answer = answerService.findById(id);
         answerService.delete(answer);
         return answerDtoAssembler.toDto(answer);
     }

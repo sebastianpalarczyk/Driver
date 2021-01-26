@@ -6,6 +6,9 @@ import pl.sebastian.driver.assembler.TrainingDtoAssembler;
 import pl.sebastian.driver.domain.Training;
 import pl.sebastian.driver.service.TrainingService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 public class TrainingController {
 
@@ -24,7 +27,29 @@ public class TrainingController {
     }
 
     @GetMapping(value = "/training/{id}")
-    public Training one(@PathVariable Long id){
-        return trainingService.findById(id);
+    public TrainingDto one(@PathVariable Long id){
+        Training training = trainingService.findById(id);
+        return trainingDtoAssembler.toDto(training);
+    }
+
+    @GetMapping(value = "/training")
+    public List<TrainingDto> all(){
+        return trainingService.all().stream()
+                .map(training -> trainingDtoAssembler.toDto(training))
+                .collect(Collectors.toList());
+    }
+
+    @PutMapping(value = "/training/{id}")
+    public TrainingDto update(@PathVariable Long id, @RequestBody TrainingDto trainingDto){
+        Training training = trainingService.findById(id);
+        training.setContent(trainingDto.getContent());
+        return trainingDtoAssembler.toDto(trainingService.save(training));
+    }
+
+    @DeleteMapping(value = "/training/{id}")
+    public TrainingDto delete(@PathVariable Long id){
+        Training training = trainingService.findById(id);
+        trainingService.delete(training);
+        return trainingDtoAssembler.toDto(training);
     }
 }
