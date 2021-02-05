@@ -16,6 +16,7 @@ Project is created with:
 * Spring Data JPA
 * Spring Data JDBC
 * biblioteka Swagger
+* Hibernate
 
 ## Status
 Project is finished.
